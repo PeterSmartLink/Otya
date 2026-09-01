@@ -1,0 +1,91 @@
+{
+  "info": {
+    "name": "Otya Public Surface Checks (pre-release)",
+    "description": "Secret-free checks for Otya public surfaces. This collection is safe to keep public. Passing these checks does not prove production release acceptance or physical-device behavior.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://petersmartlink.com"
+    }
+  ],
+  "item": [
+    {
+      "name": "Public release metadata",
+      "item": [
+        {
+          "name": "Latest",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/latest"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responds successfully', function () {",
+                  "  pm.expect(pm.response.code).to.be.within(200, 399);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API version",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/api/version"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responds successfully', function () {",
+                  "  pm.expect(pm.response.code).to.be.within(200, 399);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Public trust and help",
+      "item": [
+        {
+          "name": "Help and docs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/docs"
+          }
+        },
+        {
+          "name": "Privacy",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/privacy"
+          }
+        },
+        {
+          "name": "Terms",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/terms"
+          }
+        }
+      ]
+    }
+  ]
+}
