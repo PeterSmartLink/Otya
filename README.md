@@ -10,6 +10,14 @@ Otya is a media-first product by PeterSmart Link. This repository is the public 
 - Terms: https://petersmartlink.com/terms
 - Download: https://petersmartlink.com/download/otya-player
 
+## Operating documents
+
+- [Beta scope and acceptance](BETA.md)
+- [AI operating model](AI_OPERATING_MODEL.md)
+- [Public automation policy](PUBLIC_AUTOMATION_POLICY.md)
+- [Channel responsibilities](CHANNELS.md)
+- [Public Postman collection](postman/Otya-Public.postman_collection.json)
+
 ## What belongs here
 
 This repository may contain:
