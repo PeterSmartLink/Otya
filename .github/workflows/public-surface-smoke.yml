@@ -1,0 +1,57 @@
+name: Check Otya public surfaces
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-surfaces:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check canonical public URLs
+        shell: bash
+        run: |
+          set -euo pipefail
+          urls=(
+            "https://petersmartlink.com"
+            "https://petersmartlink.com/docs"
+            "https://petersmartlink.com/privacy"
+            "https://petersmartlink.com/terms"
+            "https://petersmartlink.com/download/otya-player"
+          )
+
+          for url in "${urls[@]}"; do
+            echo "Checking $url"
+            curl \
+              --fail \
+              --silent \
+              --show-error \
+              --location \
+              --max-time 15 \
+              --retry 1 \
+              --output /dev/null \
+              "$url"
+          done
+
+      - name: Check public version endpoints
+        shell: bash
+        run: |
+          set -euo pipefail
+          for url in \
+            "https://petersmartlink.com/latest" \
+            "https://petersmartlink.com/api/version"
+          do
+            echo "Checking $url"
+            curl \
+              --fail \
+              --silent \
+              --show-error \
+              --location \
+              --max-time 15 \
+              --retry 1 \
+              --output /dev/null \
+              "$url"
+          done
