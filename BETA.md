@@ -18,7 +18,7 @@ The beta should validate the existing product only:
 - Otya account sign-in, registration, recovery and security flows;
 - Google sign-in where enabled;
 - Next request/streaming behavior and graceful failure when online services are unavailable;
-- Online Music behavior that is already supported;
+- local-first Music discovery and playback, with retired online-catalog provider surfaces remaining absent;
 - notifications and deep-link/open behavior;
 - update checking and architecture-correct downloads;
 - Help, Privacy, Terms, account deletion and support links;

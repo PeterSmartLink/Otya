@@ -5,7 +5,9 @@ Otya is a media-first product by PeterSmart Link. This repository is the public 
 ## Public surfaces
 
 - Product: https://petersmartlink.com
-- Help and documentation: https://petersmartlink.com/docs
+- Help and documentation: https://docs.petersmartlink.com
+- Service status: https://status.petersmartlink.com
+- Account and product space: https://space.petersmartlink.com
 - Privacy: https://petersmartlink.com/privacy
 - Terms: https://petersmartlink.com/terms
 - Download: https://petersmartlink.com/download/otya-player
@@ -13,7 +15,7 @@ Otya is a media-first product by PeterSmart Link. This repository is the public 
 
 ## Latest update
 
-- [Otya 1.0 enters final reliability validation — 1 September 2026](news/2026-09-01-final-reliability-validation.md)
+- [Otya 1.0 confirms its local-first Music scope — 2 September 2026](news/2026-09-02-local-first-music-scope.md)
 
 ## Operating documents
 
@@ -23,7 +25,7 @@ Otya is a media-first product by PeterSmart Link. This repository is the public 
 - [AI provider strategy](AI_PROVIDER_STRATEGY.md)
 - [Public automation policy](PUBLIC_AUTOMATION.md)
 - [Developer and communication channels](DEVELOPER_CHANNELS.md)
-- [Public Postman collection](postman/Otya-Public.postman_collection.json)
+- [Public Postman collection](postman/Otya-public.postman_collection.json)
 
 ## What belongs here
 
