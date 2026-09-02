@@ -2,6 +2,22 @@ name: Check Otya public surfaces
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/public-surface-smoke.yml'
+      - 'README.md'
+      - 'BETA.md'
+      - 'news/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/public-surface-smoke.yml'
+      - 'README.md'
+      - 'BETA.md'
+      - 'news/**'
+  schedule:
+    - cron: '17 5 * * *'
 
 permissions:
   contents: read
@@ -11,13 +27,17 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - uses: actions/checkout@v6
+
       - name: Check canonical public URLs
         shell: bash
         run: |
           set -euo pipefail
           urls=(
             "https://petersmartlink.com"
-            "https://petersmartlink.com/docs"
+            "https://docs.petersmartlink.com"
+            "https://status.petersmartlink.com"
+            "https://space.petersmartlink.com"
             "https://petersmartlink.com/privacy"
             "https://petersmartlink.com/terms"
             "https://petersmartlink.com/download/otya-player"
@@ -35,6 +55,14 @@ jobs:
               --output /dev/null \
               "$url"
           done
+
+      - name: Check current public repository contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f postman/Otya-public.postman_collection.json
+          ! grep -Fq 'petersmartlink.com/docs' README.md
+          ! grep -Fq 'Online Music behavior that is already supported' BETA.md
 
       - name: Check public version endpoints
         shell: bash

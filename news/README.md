@@ -6,6 +6,7 @@ Announcements here are the permanent public record for product milestones, beta/
 
 ## 2026
 
+- [2 September — Otya 1.0 confirms its local-first Music scope](2026-09-02-local-first-music-scope.md)
 - [1 September — Otya 1.0 enters final reliability validation](2026-09-01-final-reliability-validation.md)
 
 ## Publication rule
