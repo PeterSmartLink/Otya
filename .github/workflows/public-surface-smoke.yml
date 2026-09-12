@@ -6,14 +6,18 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/public-surface-smoke.yml'
+      - '.github/CODEOWNERS'
       - 'README.md'
+      - 'SECURITY.md'
       - 'BETA.md'
       - 'news/**'
   pull_request:
     branches: [main]
     paths:
       - '.github/workflows/public-surface-smoke.yml'
+      - '.github/CODEOWNERS'
       - 'README.md'
+      - 'SECURITY.md'
       - 'BETA.md'
       - 'news/**'
   schedule:
@@ -61,6 +65,11 @@ jobs:
         run: |
           set -euo pipefail
           test -f postman/Otya-public.postman_collection.json
+          test -f SECURITY.md
+          test -f .github/CODEOWNERS
+          grep -Fq 'support@petersmartlink.com' SECURITY.md
+          grep -Fq '* @PeterSmartLink' .github/CODEOWNERS
+          grep -Fq '[Security and vulnerability reporting](SECURITY.md)' README.md
           ! grep -Fq 'petersmartlink.com/docs' README.md
           ! grep -Fq 'Online Music behavior that is already supported' BETA.md
 
