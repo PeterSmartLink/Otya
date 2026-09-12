@@ -26,6 +26,7 @@ Otya is a media-first product by PeterSmart Link. This repository is the public 
 - [Public automation policy](PUBLIC_AUTOMATION.md)
 - [Developer and communication channels](DEVELOPER_CHANNELS.md)
 - [Public Postman collection](postman/Otya-public.postman_collection.json)
+- [Security and vulnerability reporting](SECURITY.md)
 
 ## What belongs here
 
@@ -62,4 +63,4 @@ Otya v1 is still under acceptance. A successful CI build is not the same as a re
 
 ## Security
 
-Please report security issues privately through the official Otya/PeterSmart Link support or security channel. Do not publish secrets, tokens, exploit details or user data in a public issue.
+Please use the [Otya Security Policy](SECURITY.md) to report vulnerabilities privately. Do not publish secrets, tokens, exploit details or user data in a public issue.
