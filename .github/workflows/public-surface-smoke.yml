@@ -64,7 +64,7 @@ jobs:
           ! grep -Fq 'petersmartlink.com/docs' README.md
           ! grep -Fq 'Online Music behavior that is already supported' BETA.md
 
-      - name: Check public version endpoints
+      - name: Check public JSON contracts
         shell: bash
         run: |
           set -euo pipefail
@@ -80,6 +80,32 @@ jobs:
               --location \
               --max-time 15 \
               --retry 1 \
-              --output /dev/null \
+              --output /tmp/otya-public.json \
               "$url"
+            python3 -m json.tool /tmp/otya-public.json >/dev/null
           done
+
+      - name: Check public authentication protection
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl \
+            --fail \
+            --silent \
+            --show-error \
+            --location \
+            --max-time 15 \
+            --retry 1 \
+            --output /tmp/otya-turnstile.json \
+            "https://petersmartlink.com/api/security/turnstile/config"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path('/tmp/otya-turnstile.json').read_text())
+          if data.get('turnstile') is not True:
+              raise SystemExit('Turnstile is not enabled on the public authentication surface')
+          if not str(data.get('siteKey') or '').strip():
+              raise SystemExit('Turnstile public site key is unavailable')
+          print('Turnstile public authentication protection is available')
+          PY
